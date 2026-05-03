@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PhoneFrame } from "@/components/PhoneFrame";
+import { LanguageToggle } from "@/components/LanguageToggle";
+import { useI18n } from "@/lib/i18n";
+import caffyIcon from "@/assets/caffy-icon.png";
 import dashboard from "@/assets/screen-dashboard.jpg";
 import sleep from "@/assets/screen-sleep.jpg";
 import drinks from "@/assets/screen-drinks.jpg";
@@ -34,74 +37,54 @@ function AppStoreBadge() {
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="mb-3 text-xs uppercase tracking-[0.22em] text-brand">{children}</p>
+    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-brand">{children}</p>
   );
 }
 
 function Index() {
+  const { t } = useI18n();
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       {/* Nav */}
       <header className="sticky top-0 z-40 border-b border-border/50 bg-background/70 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-2">
-            <div
-              className="flex h-8 w-8 items-center justify-center rounded-xl"
-              style={{ background: "var(--gradient-brand)" }}
-            >
-              <span className="text-sm font-bold text-brand-foreground">C</span>
-            </div>
-            <span className="text-lg font-semibold tracking-tight">Caffy</span>
-          </div>
-          <nav className="hidden gap-8 text-sm text-muted-foreground sm:flex">
-            <a href="#tracking" className="transition-colors hover:text-foreground">Tracking</a>
-            <a href="#metabolism" className="transition-colors hover:text-foreground">Metabolism</a>
-            <a href="#sleep" className="transition-colors hover:text-foreground">Sleep</a>
-            <a href="#insights" className="transition-colors hover:text-foreground">Insights</a>
-          </nav>
-          <a
-            href="#download"
-            className="rounded-full bg-brand px-4 py-2 text-sm font-medium text-brand-foreground transition-opacity hover:opacity-90"
-          >
-            Get the app
+          <a href="#home" className="flex items-center gap-2.5">
+            <img src={caffyIcon} alt="Caffy" width={32} height={32} className="h-8 w-8 rounded-[8px]" />
+            <span className="text-lg font-bold tracking-tight">Caffy</span>
           </a>
+          <nav className="hidden gap-8 text-sm font-medium text-muted-foreground sm:flex">
+            <a href="#home" className="transition-colors hover:text-foreground">{t("nav.home")}</a>
+            <a href="#features" className="transition-colors hover:text-foreground">{t("nav.features")}</a>
+            <a href="#support" className="transition-colors hover:text-foreground">{t("nav.support")}</a>
+            <a href="#privacy" className="transition-colors hover:text-foreground">{t("nav.privacy")}</a>
+          </nav>
+          <LanguageToggle />
         </div>
       </header>
 
       {/* Hero */}
-      <section className="relative overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
-        <div className="mx-auto grid max-w-6xl gap-16 px-6 pb-16 pt-20 md:grid-cols-[1.1fr_1fr] md:items-center md:pt-32">
+      <section id="home" className="relative overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
+        <div className="mx-auto grid max-w-6xl gap-16 px-6 pb-20 pt-20 md:grid-cols-[1fr_1.05fr] md:items-center md:pt-28">
           <div>
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-brand" />
-              Now on iOS 17+
+              {t("hero.badge")}
             </div>
-            <h1 className="font-display text-5xl leading-[1.05] tracking-tight md:text-7xl">
-              Know your caffeine.
+            <h1 className="font-display text-5xl leading-[1.02] tracking-tight md:text-6xl lg:text-7xl">
+              {t("hero.title1")}
               <br />
-              <span className="italic text-brand">Know your body.</span>
+              <span className="text-brand">{t("hero.title2")}</span>
             </h1>
             <p className="mt-6 max-w-md text-lg text-muted-foreground">
-              Caffy is the science-backed caffeine tracker — personalized to your metabolism,
-              tuned for your sleep.
+              {t("hero.sub")}
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-8">
               <AppStoreBadge />
-              <a
-                href="#tracking"
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-              >
-                See it in action →
-              </a>
-            </div>
-            <div className="mt-10 flex items-center gap-6 text-xs text-muted-foreground">
-              <span>EN · TR · DE · ES · 日本語</span>
-              <span className="h-3 w-px bg-border" />
-              <span>Privacy-first</span>
             </div>
           </div>
 
-          {/* Hero phone trio */}
+          {/* Hero phone trio — bigger */}
           <div className="relative">
             <div
               className="absolute inset-0 -z-10 blur-3xl"
@@ -110,21 +93,21 @@ function Index() {
                 opacity: 0.35,
               }}
             />
-            <div className="relative flex items-end justify-center gap-2 sm:gap-4">
+            <div className="relative flex items-end justify-center gap-3 sm:gap-5">
               <PhoneFrame
                 src={metabolism}
                 alt="Caffeine metabolism curve"
-                className="w-[42%] translate-y-6 rotate-[-6deg] opacity-90"
+                className="w-[58%] max-w-[260px] translate-y-8 rotate-[-6deg] opacity-95"
               />
               <PhoneFrame
                 src={dashboard}
                 alt="Caffy dashboard"
-                className="z-10 w-[52%]"
+                className="z-10 w-[68%] max-w-[320px]"
               />
               <PhoneFrame
                 src={sleep}
                 alt="Sleep prediction"
-                className="w-[42%] translate-y-6 rotate-[6deg] opacity-90"
+                className="w-[58%] max-w-[260px] translate-y-8 rotate-[6deg] opacity-95"
               />
             </div>
           </div>
@@ -135,9 +118,9 @@ function Index() {
       <section className="border-y border-border/60 bg-surface/30">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-3">
           {[
-            { k: "5h", v: "Average half-life of caffeine — but yours could be 1.5h or 9h." },
-            { k: "10h", v: "Window before bedtime where coffee still touches your sleep." },
-            { k: "90min", v: "After waking — the optimal start for your first coffee." },
+            { k: "5h", v: t("stats.halflife") },
+            { k: "10h", v: t("stats.window") },
+            { k: "90min", v: t("stats.morning") },
           ].map((s) => (
             <div key={s.k}>
               <div className="font-display text-5xl text-brand">{s.k}</div>
@@ -147,22 +130,22 @@ function Index() {
         </div>
       </section>
 
+      {/* Features anchor wraps everything below */}
+      <div id="features">
+
       {/* Feature 1 — Tracking */}
-      <section id="tracking" className="mx-auto max-w-6xl px-6 py-28">
+      <section className="mx-auto max-w-6xl px-6 py-28">
         <div className="grid gap-16 md:grid-cols-2 md:items-center">
           <div className="order-2 md:order-1">
-            <SectionLabel>Smart tracking</SectionLabel>
+            <SectionLabel>{t("tracking.label")}</SectionLabel>
             <h2 className="font-display text-4xl tracking-tight md:text-5xl">
-              50+ drinks. <span className="italic text-muted-foreground">Two taps to log.</span>
+              {t("tracking.title1")} <span className="text-muted-foreground">{t("tracking.title2")}</span>
             </h2>
-            <p className="mt-5 max-w-md text-muted-foreground">
-              From a single espresso to a Monster, Caffy knows the caffeine in every drink.
-              Browse a curated library or add your own. Your daily total is always one tap away.
-            </p>
+            <p className="mt-5 max-w-md text-muted-foreground">{t("tracking.body")}</p>
             <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
-              <li className="flex gap-3"><span className="text-brand">◆</span> Coffee, tea, energy & more — categorized</li>
-              <li className="flex gap-3"><span className="text-brand">◆</span> Custom drinks with your own mg & volume</li>
-              <li className="flex gap-3"><span className="text-brand">◆</span> Beautiful daily, weekly and monthly log</li>
+              <li className="flex gap-3"><span className="text-brand">◆</span> {t("tracking.li1")}</li>
+              <li className="flex gap-3"><span className="text-brand">◆</span> {t("tracking.li2")}</li>
+              <li className="flex gap-3"><span className="text-brand">◆</span> {t("tracking.li3")}</li>
             </ul>
           </div>
           <div className="order-1 grid grid-cols-2 gap-4 md:order-2">
@@ -173,34 +156,26 @@ function Index() {
       </section>
 
       {/* Feature 2 — Metabolism */}
-      <section id="metabolism" className="border-y border-border/60 bg-surface/30">
+      <section className="border-y border-border/60 bg-surface/30">
         <div className="mx-auto grid max-w-6xl gap-16 px-6 py-28 md:grid-cols-2 md:items-center">
           <div className="grid grid-cols-2 gap-4">
             <PhoneFrame src={metabolism} alt="Metabolism decay curve" className="-translate-y-4" />
             <PhoneFrame src={sim} alt="What if I drink simulator" className="translate-y-4" />
           </div>
           <div>
-            <SectionLabel>Metabolism engine</SectionLabel>
+            <SectionLabel>{t("metab.label")}</SectionLabel>
             <h2 className="font-display text-4xl tracking-tight md:text-5xl">
-              Your personal <span className="italic text-brand">half-life model.</span>
+              {t("metab.title1")} <span className="text-brand">{t("metab.title2")}</span>
             </h2>
-            <p className="mt-5 max-w-md text-muted-foreground">
-              Caffy calculates how caffeine actually clears your body — adjusted for your age,
-              gender, smoking status, pregnancy and contraceptive use. See every active drink
-              decay in real time.
-            </p>
+            <p className="mt-5 max-w-md text-muted-foreground">{t("metab.body")}</p>
             <div className="mt-8 grid grid-cols-2 gap-4">
               <div className="rounded-2xl border border-border bg-surface p-5">
-                <div className="font-display text-3xl text-brand">What if?</div>
-                <p className="mt-1 text-xs text-muted-foreground">
-                  Simulate any drink before you sip it.
-                </p>
+                <div className="font-display text-2xl text-brand">{t("metab.whatif")}</div>
+                <p className="mt-1 text-xs text-muted-foreground">{t("metab.whatifsub")}</p>
               </div>
               <div className="rounded-2xl border border-border bg-surface p-5">
-                <div className="font-display text-3xl text-brand">Live</div>
-                <p className="mt-1 text-xs text-muted-foreground">
-                  Active drinks update every minute.
-                </p>
+                <div className="font-display text-2xl text-brand">{t("metab.live")}</div>
+                <p className="mt-1 text-xs text-muted-foreground">{t("metab.livesub")}</p>
               </div>
             </div>
           </div>
@@ -208,23 +183,18 @@ function Index() {
       </section>
 
       {/* Feature 3 — Sleep */}
-      <section id="sleep" className="mx-auto max-w-6xl px-6 py-28">
+      <section className="mx-auto max-w-6xl px-6 py-28">
         <div className="grid gap-16 md:grid-cols-2 md:items-center">
           <div className="order-2 md:order-1">
-            <SectionLabel>Sleep coach</SectionLabel>
+            <SectionLabel>{t("sleep.label")}</SectionLabel>
             <h2 className="font-display text-4xl tracking-tight md:text-5xl">
-              See tonight's sleep,{" "}
-              <span className="italic text-muted-foreground">before it happens.</span>
+              {t("sleep.title1")} <span className="text-muted-foreground">{t("sleep.title2")}</span>
             </h2>
-            <p className="mt-5 max-w-md text-muted-foreground">
-              Caffy projects how much caffeine will still be in your system at bedtime,
-              estimates your sleep readiness, and tells you the latest safe sip — based on
-              your own schedule and biology.
-            </p>
+            <p className="mt-5 max-w-md text-muted-foreground">{t("sleep.body")}</p>
             <ul className="mt-6 space-y-3 text-sm text-muted-foreground">
-              <li className="flex gap-3"><span className="text-brand">◆</span> Sleep readiness score, every evening</li>
-              <li className="flex gap-3"><span className="text-brand">◆</span> Bedtime caffeine projection</li>
-              <li className="flex gap-3"><span className="text-brand">◆</span> Weekly sleep impact analysis</li>
+              <li className="flex gap-3"><span className="text-brand">◆</span> {t("sleep.li1")}</li>
+              <li className="flex gap-3"><span className="text-brand">◆</span> {t("sleep.li2")}</li>
+              <li className="flex gap-3"><span className="text-brand">◆</span> {t("sleep.li3")}</li>
             </ul>
           </div>
           <div className="order-1 md:order-2">
@@ -234,18 +204,14 @@ function Index() {
       </section>
 
       {/* Feature 4 — Insights & AI */}
-      <section id="insights" className="border-y border-border/60 bg-surface/30">
+      <section className="border-y border-border/60 bg-surface/30">
         <div className="mx-auto max-w-6xl px-6 py-28">
           <div className="mb-16 max-w-2xl">
-            <SectionLabel>Insights & AI</SectionLabel>
+            <SectionLabel>{t("insights.label")}</SectionLabel>
             <h2 className="font-display text-4xl tracking-tight md:text-5xl">
-              Quiet weekly debriefs.{" "}
-              <span className="italic text-muted-foreground">Real behavior change.</span>
+              {t("insights.title1")} <span className="text-muted-foreground">{t("insights.title2")}</span>
             </h2>
-            <p className="mt-5 max-w-xl text-muted-foreground">
-              Optimal timing, habit patterns, your caffeine DNA and an AI weekly analysis that
-              actually understands your data — not generic advice.
-            </p>
+            <p className="mt-5 max-w-xl text-muted-foreground">{t("insights.body")}</p>
           </div>
           <div className="grid gap-8 md:grid-cols-3">
             <PhoneFrame src={insights} alt="Insights dashboard" />
@@ -259,19 +225,15 @@ function Index() {
       <section className="mx-auto max-w-6xl px-6 py-28">
         <div className="grid gap-16 md:grid-cols-2 md:items-center">
           <div>
-            <SectionLabel>Built around you</SectionLabel>
+            <SectionLabel>{t("personal.label")}</SectionLabel>
             <h2 className="font-display text-4xl tracking-tight md:text-5xl">
-              Your body, <span className="italic text-brand">your model.</span>
+              {t("personal.title1")} <span className="text-brand">{t("personal.title2")}</span>
             </h2>
-            <p className="mt-5 max-w-md text-muted-foreground">
-              Set your weight, age, gender, sensitivity and lifestyle once. Caffy retunes the
-              entire engine — half-life, sleep window, optimal timing — to your biology.
-              Private by default, all on-device.
-            </p>
+            <p className="mt-5 max-w-md text-muted-foreground">{t("personal.body")}</p>
             <div className="mt-8 grid grid-cols-3 gap-3 text-center text-xs text-muted-foreground">
-              {["Half-life", "Sensitivity", "Sleep window", "Chronotype", "Limit", "Lifestyle"].map((t) => (
-                <div key={t} className="rounded-xl border border-border bg-surface px-3 py-3">
-                  {t}
+              {["Half-life", "Sensitivity", "Sleep window", "Chronotype", "Limit", "Lifestyle"].map((tk) => (
+                <div key={tk} className="rounded-xl border border-border bg-surface px-3 py-3">
+                  {tk}
                 </div>
               ))}
             </div>
@@ -282,20 +244,43 @@ function Index() {
         </div>
       </section>
 
+      </div>
+
       {/* CTA */}
-      <section id="download" className="mx-auto max-w-6xl px-6 pb-32">
+      <section className="mx-auto max-w-6xl px-6 pb-24">
         <div className="relative overflow-hidden rounded-3xl border border-border bg-surface p-12 text-center md:p-20">
           <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
           <h2 className="mx-auto max-w-2xl font-display text-4xl tracking-tight md:text-6xl">
-            Your body has a rhythm.{" "}
-            <span className="italic text-brand">Caffy listens.</span>
+            {t("cta.title1")} <span className="text-brand">{t("cta.title2")}</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-md text-muted-foreground">
-            Free to download. No account required to start tracking.
-          </p>
+          <p className="mx-auto mt-6 max-w-md text-muted-foreground">{t("cta.sub")}</p>
           <div className="mt-10 flex justify-center">
             <AppStoreBadge />
           </div>
+        </div>
+      </section>
+
+      {/* Support */}
+      <section id="support" className="mx-auto max-w-6xl px-6 pb-24">
+        <div className="rounded-3xl border border-border bg-surface/40 p-10 text-center md:p-16">
+          <SectionLabel>{t("support.title")}</SectionLabel>
+          <h2 className="font-display text-3xl tracking-tight md:text-4xl">{t("support.title")}</h2>
+          <p className="mx-auto mt-4 max-w-md text-muted-foreground">{t("support.body")}</p>
+          <a
+            href={`mailto:${t("support.email")}`}
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-brand-foreground transition-opacity hover:opacity-90"
+          >
+            {t("support.email")}
+          </a>
+        </div>
+      </section>
+
+      {/* Privacy */}
+      <section id="privacy" className="mx-auto max-w-6xl px-6 pb-24">
+        <div className="mx-auto max-w-2xl text-center">
+          <SectionLabel>{t("nav.privacy")}</SectionLabel>
+          <h2 className="font-display text-3xl tracking-tight md:text-4xl">{t("privacy.title")}</h2>
+          <p className="mt-4 text-muted-foreground">{t("privacy.body")}</p>
         </div>
       </section>
 
@@ -303,12 +288,12 @@ function Index() {
       <footer className="border-t border-border/60">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 py-10 text-sm text-muted-foreground sm:flex-row">
           <div className="flex items-center gap-2">
-            <div className="h-5 w-5 rounded-md" style={{ background: "var(--gradient-brand)" }} />
+            <img src={caffyIcon} alt="" width={20} height={20} className="h-5 w-5 rounded-[5px]" />
             <span>© 2026 Caffy</span>
           </div>
           <div className="flex gap-8">
-            <a href="#" className="transition-colors hover:text-foreground">Privacy Policy</a>
-            <a href="#" className="transition-colors hover:text-foreground">Support</a>
+            <a href="#privacy" className="transition-colors hover:text-foreground">{t("footer.privacy")}</a>
+            <a href="#support" className="transition-colors hover:text-foreground">{t("footer.support")}</a>
           </div>
         </div>
       </footer>
