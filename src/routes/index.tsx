@@ -275,15 +275,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Privacy */}
-      <section id="privacy" className="mx-auto max-w-6xl px-6 pb-24">
-        <div className="mx-auto max-w-2xl text-center">
-          <SectionLabel>{t("nav.privacy")}</SectionLabel>
-          <h2 className="font-display text-3xl tracking-tight md:text-4xl">{t("privacy.title")}</h2>
-          <p className="mt-4 text-muted-foreground">{t("privacy.body")}</p>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="border-t border-border/60">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 py-10 text-sm text-muted-foreground sm:flex-row">
@@ -292,7 +283,7 @@ function Index() {
             <span>© 2026 Caffy</span>
           </div>
           <div className="flex gap-8">
-            <a href="#privacy" className="transition-colors hover:text-foreground">{t("footer.privacy")}</a>
+            <Link to="/privacy" className="transition-colors hover:text-foreground">{t("footer.privacy")}</Link>
             <a href="#support" className="transition-colors hover:text-foreground">{t("footer.support")}</a>
           </div>
         </div>
