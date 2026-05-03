@@ -24,7 +24,7 @@ export function PhoneFrame({ src, alt, className }: PhoneFrameProps) {
           src={src}
           alt={alt}
           loading="lazy"
-          className="h-full w-full object-cover object-top"
+          className="h-full w-full object-contain object-top"
         />
       </div>
     </div>
