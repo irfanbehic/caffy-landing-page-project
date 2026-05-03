@@ -57,7 +57,7 @@ function Index() {
             <a href="#home" className="transition-colors hover:text-foreground">{t("nav.home")}</a>
             <a href="#features" className="transition-colors hover:text-foreground">{t("nav.features")}</a>
             <a href="#support" className="transition-colors hover:text-foreground">{t("nav.support")}</a>
-            <a href="#privacy" className="transition-colors hover:text-foreground">{t("nav.privacy")}</a>
+            <Link to="/privacy" className="transition-colors hover:text-foreground">{t("nav.privacy")}</Link>
           </nav>
           <LanguageToggle />
         </div>
