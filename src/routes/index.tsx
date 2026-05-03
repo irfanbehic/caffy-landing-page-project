@@ -118,9 +118,9 @@ function Index() {
       <section className="border-y border-border/60 bg-surface/30">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-3">
           {[
-            { k: "5h", v: t("stats.halflife") },
-            { k: "10h", v: t("stats.window") },
-            { k: "90min", v: t("stats.morning") },
+            { k: t("stats.k1"), v: t("stats.v1") },
+            { k: t("stats.k2"), v: t("stats.v2") },
+            { k: t("stats.k3"), v: t("stats.v3") },
           ].map((s) => (
             <div key={s.k}>
               <div className="font-display text-5xl text-brand">{s.k}</div>
