@@ -8,6 +8,7 @@ import sleep from "@/assets/screen-sleep.jpg";
 import drinks from "@/assets/screen-drinks.jpg";
 import log from "@/assets/screen-log.jpg";
 import metabolism from "@/assets/screen-metabolism.jpg";
+import metabolism2 from "@/assets/screen-metabolism-2.jpg";
 import sim from "@/assets/screen-sim.jpg";
 import insights from "@/assets/screen-insights.jpg";
 import detox from "@/assets/screen-detox.jpg";
@@ -160,7 +161,7 @@ function Index() {
         <div className="mx-auto grid max-w-6xl gap-16 px-6 py-28 md:grid-cols-2 md:items-center">
           <div className="grid grid-cols-2 gap-4">
             <PhoneFrame src={metabolism} alt="Metabolism decay curve" className="-translate-y-4" />
-            <PhoneFrame src={sim} alt="What if I drink simulator" className="translate-y-4" />
+            <PhoneFrame src={metabolism2} alt="Active drinks and absorption phase" className="translate-y-4" />
           </div>
           <div>
             <SectionLabel>{t("metab.label")}</SectionLabel>
@@ -239,7 +240,7 @@ function Index() {
             </div>
           </div>
           <div>
-            <PhoneFrame src={settings} alt="Personal profile and settings" className="max-w-[320px]" />
+            <PhoneFrame src={settings} alt="Personal profile and settings" className="max-w-[320px]" objectPosition="center 6%" />
           </div>
         </div>
       </section>
