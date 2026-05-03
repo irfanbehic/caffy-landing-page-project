@@ -65,7 +65,7 @@ function Index() {
 
       {/* Hero */}
       <section id="home" className="relative overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
-        <div className="mx-auto grid max-w-6xl gap-16 px-6 pb-20 pt-20 md:grid-cols-[1fr_1.05fr] md:items-center md:pt-28">
+        <div className="mx-auto grid max-w-7xl gap-16 px-6 pb-24 pt-20 md:grid-cols-[0.85fr_1.15fr] md:items-center md:pt-28">
           <div>
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-brand" />
@@ -93,21 +93,21 @@ function Index() {
                 opacity: 0.35,
               }}
             />
-            <div className="relative flex items-end justify-center gap-3 sm:gap-5">
+            <div className="relative flex items-end justify-center gap-4 sm:gap-6">
               <PhoneFrame
                 src={metabolism}
                 alt="Caffeine metabolism curve"
-                className="w-[58%] max-w-[260px] translate-y-8 rotate-[-6deg] opacity-95"
+                className="w-[60%] max-w-[340px] translate-y-10 rotate-[-6deg] opacity-95"
               />
               <PhoneFrame
                 src={dashboard}
                 alt="Caffy dashboard"
-                className="z-10 w-[68%] max-w-[320px]"
+                className="z-10 w-[72%] max-w-[420px]"
               />
               <PhoneFrame
                 src={sleep}
                 alt="Sleep prediction"
-                className="w-[58%] max-w-[260px] translate-y-8 rotate-[6deg] opacity-95"
+                className="w-[60%] max-w-[340px] translate-y-10 rotate-[6deg] opacity-95"
               />
             </div>
           </div>
