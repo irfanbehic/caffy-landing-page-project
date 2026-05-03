@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { useI18n } from "@/lib/i18n";
@@ -57,7 +57,7 @@ function Index() {
             <a href="#home" className="transition-colors hover:text-foreground">{t("nav.home")}</a>
             <a href="#features" className="transition-colors hover:text-foreground">{t("nav.features")}</a>
             <a href="#support" className="transition-colors hover:text-foreground">{t("nav.support")}</a>
-            <a href="#privacy" className="transition-colors hover:text-foreground">{t("nav.privacy")}</a>
+            <Link to="/privacy" className="transition-colors hover:text-foreground">{t("nav.privacy")}</Link>
           </nav>
           <LanguageToggle />
         </div>
@@ -65,7 +65,7 @@ function Index() {
 
       {/* Hero */}
       <section id="home" className="relative overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
-        <div className="mx-auto grid max-w-6xl gap-16 px-6 pb-20 pt-20 md:grid-cols-[1fr_1.05fr] md:items-center md:pt-28">
+        <div className="mx-auto grid max-w-7xl gap-16 px-6 pb-24 pt-20 md:grid-cols-[0.85fr_1.15fr] md:items-center md:pt-28">
           <div>
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-brand" />
@@ -93,21 +93,21 @@ function Index() {
                 opacity: 0.35,
               }}
             />
-            <div className="relative flex items-end justify-center gap-3 sm:gap-5">
+            <div className="relative flex items-end justify-center gap-4 sm:gap-6">
               <PhoneFrame
                 src={metabolism}
                 alt="Caffeine metabolism curve"
-                className="w-[58%] max-w-[260px] translate-y-8 rotate-[-6deg] opacity-95"
+                className="w-[60%] max-w-[340px] translate-y-10 rotate-[-6deg] opacity-95"
               />
               <PhoneFrame
                 src={dashboard}
                 alt="Caffy dashboard"
-                className="z-10 w-[68%] max-w-[320px]"
+                className="z-10 w-[72%] max-w-[420px]"
               />
               <PhoneFrame
                 src={sleep}
                 alt="Sleep prediction"
-                className="w-[58%] max-w-[260px] translate-y-8 rotate-[6deg] opacity-95"
+                className="w-[60%] max-w-[340px] translate-y-10 rotate-[6deg] opacity-95"
               />
             </div>
           </div>
@@ -118,9 +118,9 @@ function Index() {
       <section className="border-y border-border/60 bg-surface/30">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-3">
           {[
-            { k: "5h", v: t("stats.halflife") },
-            { k: "10h", v: t("stats.window") },
-            { k: "90min", v: t("stats.morning") },
+            { k: t("stats.k1"), v: t("stats.v1") },
+            { k: t("stats.k2"), v: t("stats.v2") },
+            { k: t("stats.k3"), v: t("stats.v3") },
           ].map((s) => (
             <div key={s.k}>
               <div className="font-display text-5xl text-brand">{s.k}</div>
@@ -275,15 +275,6 @@ function Index() {
         </div>
       </section>
 
-      {/* Privacy */}
-      <section id="privacy" className="mx-auto max-w-6xl px-6 pb-24">
-        <div className="mx-auto max-w-2xl text-center">
-          <SectionLabel>{t("nav.privacy")}</SectionLabel>
-          <h2 className="font-display text-3xl tracking-tight md:text-4xl">{t("privacy.title")}</h2>
-          <p className="mt-4 text-muted-foreground">{t("privacy.body")}</p>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="border-t border-border/60">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 py-10 text-sm text-muted-foreground sm:flex-row">
@@ -292,7 +283,7 @@ function Index() {
             <span>© 2026 Caffy</span>
           </div>
           <div className="flex gap-8">
-            <a href="#privacy" className="transition-colors hover:text-foreground">{t("footer.privacy")}</a>
+            <Link to="/privacy" className="transition-colors hover:text-foreground">{t("footer.privacy")}</Link>
             <a href="#support" className="transition-colors hover:text-foreground">{t("footer.support")}</a>
           </div>
         </div>
