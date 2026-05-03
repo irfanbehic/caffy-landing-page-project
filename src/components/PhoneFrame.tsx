@@ -5,9 +5,18 @@ interface PhoneFrameProps {
   alt: string;
   className?: string;
   fit?: "cover" | "contain";
+  objectPosition?: string;
+  priority?: boolean;
 }
 
-export function PhoneFrame({ src, alt, className, fit = "cover" }: PhoneFrameProps) {
+export function PhoneFrame({
+  src,
+  alt,
+  className,
+  fit = "cover",
+  objectPosition,
+  priority = false,
+}: PhoneFrameProps) {
   return (
     <div
       className={cn(
@@ -15,7 +24,6 @@ export function PhoneFrame({ src, alt, className, fit = "cover" }: PhoneFramePro
         className,
       )}
     >
-      {/* Side buttons */}
       <span className="absolute -left-[2px] top-24 h-10 w-[3px] rounded-l bg-white/10" />
       <span className="absolute -left-[2px] top-40 h-16 w-[3px] rounded-l bg-white/10" />
       <span className="absolute -right-[2px] top-32 h-20 w-[3px] rounded-r bg-white/10" />
@@ -24,9 +32,13 @@ export function PhoneFrame({ src, alt, className, fit = "cover" }: PhoneFramePro
         <img
           src={src}
           alt={alt}
-          loading="lazy"
+          loading={priority ? "eager" : "lazy"}
+          decoding="async"
+          fetchPriority={priority ? "high" : "auto"}
+          style={objectPosition ? { objectPosition } : undefined}
           className={cn(
-            "h-full w-full object-top",
+            "h-full w-full",
+            !objectPosition && "object-top",
             fit === "contain" ? "object-contain" : "object-cover",
           )}
         />
@@ -34,4 +46,3 @@ export function PhoneFrame({ src, alt, className, fit = "cover" }: PhoneFramePro
     </div>
   );
 }
-
