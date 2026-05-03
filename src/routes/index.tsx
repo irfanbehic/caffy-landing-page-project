@@ -98,16 +98,19 @@ function Index() {
               <PhoneFrame
                 src={metabolism}
                 alt="Caffeine metabolism curve"
+                priority
                 className="hidden sm:block w-[40%] max-w-[300px] translate-y-10 rotate-[-6deg] opacity-95"
               />
               <PhoneFrame
                 src={dashboard}
                 alt="Caffy dashboard"
+                priority
                 className="z-10 w-[80%] sm:w-[48%] max-w-[360px]"
               />
               <PhoneFrame
                 src={sleep}
                 alt="Sleep prediction"
+                priority
                 className="hidden sm:block w-[40%] max-w-[300px] translate-y-10 rotate-[6deg] opacity-95"
               />
             </div>
