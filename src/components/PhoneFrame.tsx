@@ -4,13 +4,14 @@ interface PhoneFrameProps {
   src: string;
   alt: string;
   className?: string;
+  fit?: "cover" | "contain";
 }
 
-export function PhoneFrame({ src, alt, className }: PhoneFrameProps) {
+export function PhoneFrame({ src, alt, className, fit = "cover" }: PhoneFrameProps) {
   return (
     <div
       className={cn(
-        "relative mx-auto aspect-[9/19.5] w-full max-w-[280px] rounded-[2.6rem] border border-white/10 bg-black p-[6px] shadow-[0_40px_120px_-40px_rgba(0,0,0,0.8)] ring-1 ring-white/5",
+        "relative mx-auto aspect-[9/19.5] w-full max-w-[280px] shrink-0 rounded-[2.6rem] border border-white/10 bg-black p-[6px] shadow-[0_40px_120px_-40px_rgba(0,0,0,0.8)] ring-1 ring-white/5",
         className,
       )}
     >
@@ -24,9 +25,13 @@ export function PhoneFrame({ src, alt, className }: PhoneFrameProps) {
           src={src}
           alt={alt}
           loading="lazy"
-          className="h-full w-full object-contain object-top"
+          className={cn(
+            "h-full w-full object-top",
+            fit === "contain" ? "object-contain" : "object-cover",
+          )}
         />
       </div>
     </div>
   );
 }
+
