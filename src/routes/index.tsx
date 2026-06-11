@@ -8,7 +8,6 @@ import sleep from "@/assets/screen-sleep.jpg";
 import drinks from "@/assets/screen-drinks.jpg";
 import log from "@/assets/screen-log.jpg";
 import metabolism from "@/assets/screen-metabolism.jpg";
-import metabolism2 from "@/assets/screen-metabolism-2.jpg";
 import sim from "@/assets/screen-sim.jpg";
 import insights from "@/assets/screen-insights.jpg";
 import detox from "@/assets/screen-detox.jpg";
@@ -22,7 +21,9 @@ export const Route = createFileRoute("/")({
 function AppStoreBadge() {
   return (
     <a
-      href="#"
+      href="https://apps.apple.com/app/id6763036774"
+      target="_blank"
+      rel="noopener noreferrer"
       className="group inline-flex items-center gap-3 rounded-2xl bg-foreground px-5 py-3 text-background transition-transform hover:-translate-y-0.5"
     >
       <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor" aria-hidden>
@@ -164,7 +165,7 @@ function Index() {
         <div className="mx-auto grid max-w-6xl gap-16 px-6 py-28 md:grid-cols-2 md:items-center">
           <div className="grid grid-cols-2 gap-4">
             <PhoneFrame src={metabolism} alt="Metabolism decay curve" className="-translate-y-4" />
-            <PhoneFrame src={metabolism2} alt="Active drinks and absorption phase" className="translate-y-4" />
+            <PhoneFrame src={sim} alt="What-if drink simulator" className="translate-y-4" />
           </div>
           <div>
             <SectionLabel>{t("metab.label")}</SectionLabel>
