@@ -8,7 +8,6 @@ import sleep from "@/assets/screen-sleep.jpg";
 import drinks from "@/assets/screen-drinks.jpg";
 import log from "@/assets/screen-log.jpg";
 import metabolism from "@/assets/screen-metabolism.jpg";
-import sim from "@/assets/screen-sim.jpg";
 import insights from "@/assets/screen-insights.jpg";
 import detox from "@/assets/screen-detox.jpg";
 import ai from "@/assets/screen-ai.jpg";
@@ -69,6 +68,13 @@ function Index() {
       <section id="home" className="relative overflow-hidden" style={{ background: "var(--gradient-hero)" }}>
         <div className="mx-auto grid max-w-7xl gap-16 px-6 pb-24 pt-20 md:grid-cols-[0.85fr_1.15fr] md:items-center md:pt-28">
           <div>
+            <img
+              src={caffyIcon}
+              alt="Caffy"
+              width={112}
+              height={112}
+              className="mb-6 h-24 w-24 rounded-[22px] shadow-[0_24px_70px_-20px_rgba(0,0,0,0.7)] ring-1 ring-white/10 md:h-28 md:w-28"
+            />
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-brand" />
               {t("hero.badge")}
@@ -165,7 +171,7 @@ function Index() {
         <div className="mx-auto grid max-w-6xl gap-16 px-6 py-28 md:grid-cols-2 md:items-center">
           <div className="grid grid-cols-2 gap-4">
             <PhoneFrame src={metabolism} alt="Metabolism decay curve" className="-translate-y-4" />
-            <PhoneFrame src={sim} alt="What-if drink simulator" className="translate-y-4" />
+            <PhoneFrame src={metabolism} alt="Absorption phase and peak forecast" objectPosition="center bottom" className="translate-y-4" />
           </div>
           <div>
             <SectionLabel>{t("metab.label")}</SectionLabel>
